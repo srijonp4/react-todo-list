@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
+import useLocalStorage from './hooks/useLocalStorage';
 
 const App = () => {
   function playSound(soundpath) {
@@ -8,7 +9,9 @@ const App = () => {
     audio.play();
   }
 
-  const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useLocalStorage('todos', []);
+
   const [input, setInput] = useState('');
 
   const handleAddTodos = (newTodo) => {
